@@ -11,13 +11,8 @@ class LatestMovieReviews extends Component {
       super(props);
       this.state = {
           reviews: []
-         
       };
     }
-   
-    // handleClick = () => {
-    //     this.setState({})
-    // }
 
     componentDidMount() {
         fetch(URL)
@@ -25,7 +20,6 @@ class LatestMovieReviews extends Component {
           .then(data => {
               this.setState({reviews: data.results})
           })
-      
     }
 
     renderReview = (review) => {
@@ -41,8 +35,8 @@ class LatestMovieReviews extends Component {
    
     render() {
       return (
-          <div className="latest-movie-reviews" onClick={this.handleClick}>
-              <MovieReviews fetchedResults={this.state.reviews} renderReview={this.renderReview}/>
+          <div className="latest-movie-reviews">
+              <MovieReviews reviews={this.state.reviews} renderReview={this.renderReview}/>
             </div>
       )
     }
