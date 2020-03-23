@@ -21,36 +21,29 @@ class SearchableMovieReviews extends Component {
             searchTerm: event.target.value
         })
     }
-   
-    handleSubmit = (event) => {
-        event.preventDefault()
+
+    fetchReviews = () => {
         let query = this.state.searchTerm
         fetch(URL + `&query=${query}`)
         .then(response => response.json())
         .then(data => {
-            // console.log(data.results)
             this.setState({reviews: data.results})
         })
     }
-
-    renderReview = (review) => {
-        return (
-        <div>
-            <h3>{review.display_title}</h3>
-            <h4>{review.headline}</h4>
-            <p>{review.summary_short}</p>
-        </div>)
+   
+    handleSubmit = (event) => {
+        event.preventDefault()
+        this.fetchReviews()
     }
    
     render() {
       return (
           <div className="searchable-movie-reviews" >
-              Searchable movie reviews Container
               <form onSubmit={event => this.handleSubmit(event)}>
                   <input type="text" value={this.state.searchTerm} onChange={event => this.handleChange(event)}></input>
                   <input type="submit" value="submit"></input>
               </form>
-              <MovieReviews reviews={this.state.reviews} renderReview={this.renderReview}/>
+              <MovieReviews reviews={this.state.reviews} />
           </div>
       )
     }
