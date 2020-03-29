@@ -38,10 +38,10 @@ const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?'
          e.preventDefault()
          this.handleSearch()
         }}>
-        <input 
+         <input 
          type="text" 
          onChange={this.handleChange}
-        />
+         />
         <button 
            type="submit"
         >
@@ -49,7 +49,7 @@ const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?'
         </button>
         </form>
               
-     <MovieReviews reviews={this.state.reviews} />
+        <MovieReviews reviews={this.state.reviews} />
     </div>
       )
      }
